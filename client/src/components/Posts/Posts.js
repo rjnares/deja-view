@@ -6,7 +6,7 @@ import useStyles from "./styles";
 
 const Posts = () => {
   const posts = useSelector((state) => state.posts);
-  console.log(posts);
+  console.log("POSTS:", posts);
   const classes = useStyles();
   return (
     <React.Fragment>
