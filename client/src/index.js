@@ -16,6 +16,9 @@ const theme = createMuiTheme({
     h2: {
       fontFamily: ["Pacifico", "cursive"].join(","),
     },
+    h6: {
+      fontFamily: ["Pacifico", "cursive"].join(","),
+    },
   },
 });
 
