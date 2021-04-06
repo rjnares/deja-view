@@ -10,12 +10,18 @@ export default makeStyles((theme) => ({
     alignItems: "center",
   },
   heading: {
-    color: "rgba(0,183,255, 1)",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "2.25rem",
+    },
   },
   image: {
     marginLeft: "15px",
+    height: "20vh",
+    [theme.breakpoints.down("md")]: {
+      height: "8vh",
+    },
   },
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down("xs")]: {
     mainContainer: {
       flexDirection: "column-reverse",
     },

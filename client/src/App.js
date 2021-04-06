@@ -11,7 +11,7 @@ import Posts from "./components/Posts/Posts";
 import Form from "./components/Form/Form";
 import useStyles from "./styles";
 
-// import dejaViewImage from "./images/dejaView.jpg";
+import dejaViewImage from "./images/dejaView.png";
 
 const App = () => {
   const [currentId, setCurrentId] = useState(0);
@@ -25,10 +25,25 @@ const App = () => {
   return (
     <Container maxWidth="lg">
       <AppBar className={classes.appBar} position="static" color="inherit">
-        <Typography className={classes.heading} variant="h2" align="center">
-          Deja View
-        </Typography>
-        {/*<img className={classes.image} src={dejaViewImage} alt="Deja View" height="60" />*/}
+        <div>
+          <Typography
+            className={classes.heading}
+            color="primary"
+            variant="h2"
+            align="center"
+          >
+            Deja
+          </Typography>
+          <Typography
+            className={classes.heading}
+            color="secondary"
+            variant="h2"
+            align="center"
+          >
+            View
+          </Typography>
+        </div>
+        <img className={classes.image} src={dejaViewImage} alt="Deja View" />
       </AppBar>
       <Grow in>
         <Container>
