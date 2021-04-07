@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Typography from "@material-ui/core/Typography";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -12,7 +12,15 @@ import useStyles from "./styles";
 const Navbar = () => {
   const classes = useStyles();
 
-  const user = null;
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+
+  useEffect(() => {
+    const token = user?.token;
+
+    // JWT manual sign in later...
+
+    setUser(JSON.parse(localStorage.getItem("profile")));
+  }, []);
 
   return (
     <AppBar className={classes.appBar} position="static" color="inherit">
