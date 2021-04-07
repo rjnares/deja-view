@@ -1,18 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Typography from "@material-ui/core/Typography";
 import Toolbar from "@material-ui/core/Toolbar";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
-import { Link } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import dejaViewImage from "../../images/dejaView.png";
 import useStyles from "./styles";
+import { SIGNOUT } from "../../constants/actionTypes";
 
 const Navbar = () => {
   const classes = useStyles();
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const location = useLocation();
 
-  const user = null;
+  const signOut = () => {
+    dispatch({ type: SIGNOUT });
+    history.push("/");
+    setUser(null);
+  };
+
+  useEffect(() => {
+    const token = user?.token;
+
+    // JWT manual sign in later...
+
+    setUser(JSON.parse(localStorage.getItem("profile")));
+  }, [location]);
 
   return (
     <AppBar className={classes.appBar} position="static" color="inherit">
@@ -61,6 +79,7 @@ const Navbar = () => {
               className={classes.signout}
               variant="contained"
               color="secondary"
+              onClick={signOut}
             >
               Sign Out
             </Button>
