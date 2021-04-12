@@ -13,7 +13,6 @@ import { createPost, updatePost } from "../../actions/posts";
 
 const Form = ({ currentId, setCurrentId }) => {
   const [postData, setPostData] = useState({
-    creator: "",
     title: "",
     message: "",
     tags: "",
@@ -25,6 +24,8 @@ const Form = ({ currentId, setCurrentId }) => {
   const dispatch = useDispatch();
   const classes = useStyles();
 
+  const user = JSON.parse(localStorage.getItem("profile"));
+
   useEffect(() => {
     if (post) setPostData(post);
   }, [post]);
@@ -32,7 +33,6 @@ const Form = ({ currentId, setCurrentId }) => {
   const clear = () => {
     setCurrentId(0);
     setPostData({
-      creator: "",
       title: "",
       message: "",
       tags: "",
@@ -44,13 +44,25 @@ const Form = ({ currentId, setCurrentId }) => {
     e.preventDefault();
 
     if (currentId === 0) {
-      dispatch(createPost(postData));
+      dispatch(createPost({ ...postData, name: user?.result?.name }));
       clear();
     } else {
-      dispatch(updatePost(currentId, postData));
+      dispatch(
+        updatePost(currentId, { ...postData, name: user?.result?.name })
+      );
       clear();
     }
   };
+
+  if (!user?.result?.name) {
+    return (
+      <Paper className={classes.paper}>
+        <Typography variant="h5" align="center">
+          Please sign in to share and like views
+        </Typography>
+      </Paper>
+    );
+  }
 
   return (
     <Paper className={classes.paper}>
@@ -63,16 +75,6 @@ const Form = ({ currentId, setCurrentId }) => {
         <Typography align="center" variant="h6">
           {currentId ? `Editing "${post.title}"` : "Share your View"}
         </Typography>
-        <TextField
-          name="creator"
-          variant="outlined"
-          label="Creator"
-          fullWidth
-          value={postData.creator}
-          onChange={(e) =>
-            setPostData({ ...postData, creator: e.target.value })
-          }
-        />
         <TextField
           name="title"
           variant="outlined"
