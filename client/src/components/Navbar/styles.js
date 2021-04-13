@@ -10,22 +10,34 @@ export default makeStyles((theme) => ({
     justifyContent: "space-between",
     alignItems: "center",
     padding: "10px 50px",
+    [theme.breakpoints.down("xs")]: {
+      flexDirection: "column",
+    },
   },
   headingContainer: {
     display: "flex",
   },
   heading: {
     textDecoration: "none",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "2.75rem",
+    },
   },
   image: {
     marginLeft: "15px",
     marginTop: "15px",
     marginBottom: "15px",
+    [theme.breakpoints.down("xs")]: {
+      height: "40px",
+    },
   },
   toolbar: {
     display: "flex",
     justifyContent: "flex-end",
     width: "400px",
+    [theme.breakpoints.down("xs")]: {
+      width: "80vw",
+    },
   },
   profile: {
     display: "flex",
