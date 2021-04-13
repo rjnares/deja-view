@@ -20,15 +20,15 @@ export default makeStyles((theme) => ({
   heading: {
     textDecoration: "none",
     [theme.breakpoints.down("sm")]: {
-      fontSize: "2.75rem",
+      fontSize: "2.65rem",
     },
   },
   image: {
-    marginLeft: "15px",
+    marginLeft: "13px",
     marginTop: "15px",
     marginBottom: "15px",
     [theme.breakpoints.down("sm")]: {
-      height: "40px",
+      height: "2.65rem",
     },
   },
   toolbar: {
