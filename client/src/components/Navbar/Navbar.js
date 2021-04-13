@@ -8,7 +8,7 @@ import { Link, useHistory, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import decode from "jwt-decode";
 
-import dejaViewImage from "../../images/dejaView.png";
+import dejaViewImage from "../../images/camera.png";
 import useStyles from "./styles";
 import { SIGNOUT } from "../../constants/actionTypes";
 
@@ -39,39 +39,39 @@ const Navbar = () => {
 
   return (
     <AppBar className={classes.appBar} position="static" color="inherit">
-      <div className={classes.brandContainer}>
-        <div className={classes.headingContainer}>
-          <Typography
-            component={Link}
-            to="/"
-            className={classes.heading}
-            color="primary"
-            variant="h2"
-            align="center"
-          >
-            Deja
-          </Typography>
-          <Typography
-            className={classes.heading}
-            color="secondary"
-            variant="h2"
-            align="center"
-          >
-            View
-          </Typography>
+      <Link to="/" style={{ textDecoration: "none" }}>
+        <div className={classes.brandContainer}>
+          <div className={classes.headingContainer}>
+            <Typography
+              className={classes.heading}
+              color="primary"
+              variant="h2"
+              align="center"
+            >
+              Deja
+            </Typography>
+            <Typography
+              className={classes.heading}
+              color="secondary"
+              variant="h2"
+              align="center"
+            >
+              View
+            </Typography>
+          </div>
+          <img
+            className={classes.image}
+            src={dejaViewImage}
+            alt="Deja View"
+            height={60}
+          />
         </div>
-        <img
-          className={classes.image}
-          src={dejaViewImage}
-          alt="Deja View"
-          height={60}
-        />
-      </div>
+      </Link>
       <Toolbar className={classes.toolbar}>
         {user ? (
           <div className={classes.profile}>
             <Avatar
-              className={classes.purple}
+              className={classes.avatar}
               alt={user.result.name}
               src={user.result.imageUrl}
             >
