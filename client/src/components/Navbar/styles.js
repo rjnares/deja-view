@@ -1,5 +1,4 @@
 import { makeStyles } from "@material-ui/core/styles";
-import { deepPurple } from "@material-ui/core/colors";
 
 export default makeStyles((theme) => ({
   appBar: {
@@ -60,9 +59,9 @@ export default makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
   },
-  purple: {
-    color: theme.palette.getContrastText(deepPurple[500]),
-    backgroundColor: deepPurple[500],
+  avatar: {
+    color: theme.palette.getContrastText("#716658"),
+    backgroundColor: "#716658",
     marginRight: "10px",
     [theme.breakpoints.down("sm")]: {
       marginRight: "0px",
