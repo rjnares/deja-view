@@ -57,6 +57,7 @@ export default makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     marginBottom: "20px",
+    marginTop: "5px",
   },
   avatar: {
     color: theme.palette.getContrastText("#716658"),
