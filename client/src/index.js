@@ -20,6 +20,16 @@ const theme = createMuiTheme({
       fontFamily: ["Pacifico", "cursive"].join(","),
     },
   },
+  palette: {
+    primary: {
+      main: "#03a59b",
+      contrastText: "#fff",
+    },
+    secondary: {
+      main: "#f69d20",
+      contrastText: "#fff",
+    },
+  },
 });
 
 ReactDOM.render(

@@ -8,8 +8,7 @@ import { Link, useHistory, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import decode from "jwt-decode";
 
-import dejaViewImage from "../../images/dejaView.png";
-// import dejaViewImage from "../../images/camera.png";
+import dejaViewImage from "../../images/camera.png";
 import useStyles from "./styles";
 import { SIGNOUT } from "../../constants/actionTypes";
 
