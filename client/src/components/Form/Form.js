@@ -2,6 +2,11 @@ import React, { useState, useEffect } from "react";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
+import Dialog from "@material-ui/core/Dialog";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
 import FileBase from "react-file-base64";
 import { useDispatch } from "react-redux";
@@ -18,6 +23,8 @@ const Form = ({ currentId, setCurrentId }) => {
     tags: "",
     selectedFile: "",
   });
+  const [showAlertDialog, setShowAlertDialog] = useState(false);
+  const [formValidationMessage, setFormValidationMessage] = useState("");
   const post = useSelector((state) =>
     currentId ? state.posts.find((message) => message._id === currentId) : null
   );
@@ -29,6 +36,46 @@ const Form = ({ currentId, setCurrentId }) => {
   useEffect(() => {
     if (post) setPostData(post);
   }, [post]);
+
+  const AlertDialog = () => {
+    return (
+      <div>
+        <Dialog
+          open={showAlertDialog}
+          onClose={() => setShowAlertDialog(false)}
+          aria-labelledby="form-submission-error-title"
+          aria-describedby="form-submission-error-description"
+        >
+          <DialogTitle
+            disableTypography={true}
+            id="form-submission-error-title"
+          >
+            <Typography align="center" variant="h5">
+              Form submission error
+            </Typography>
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText
+              id="form-submission-error-description"
+              variant="subtitle1"
+              align="center"
+            >
+              {formValidationMessage}
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button
+              onClick={() => setShowAlertDialog(false)}
+              color="primary"
+              autoFocus
+            >
+              Close
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </div>
+    );
+  };
 
   const clear = () => {
     setCurrentId(0);
@@ -43,14 +90,25 @@ const Form = ({ currentId, setCurrentId }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (currentId === 0) {
-      dispatch(createPost({ ...postData, name: user?.result?.name }));
-      clear();
+    if (!postData.title) {
+      setFormValidationMessage("View is missing a required title");
+      setShowAlertDialog(true);
+    } else if (!postData.message) {
+      setFormValidationMessage("View is missing a required message");
+      setShowAlertDialog(true);
+    } else if (!postData.selectedFile) {
+      setFormValidationMessage("View is missing a required image file");
+      setShowAlertDialog(true);
     } else {
-      dispatch(
-        updatePost(currentId, { ...postData, name: user?.result?.name })
-      );
-      clear();
+      if (currentId === 0) {
+        dispatch(createPost({ ...postData, name: user?.result?.name }));
+        clear();
+      } else {
+        dispatch(
+          updatePost(currentId, { ...postData, name: user?.result?.name })
+        );
+        clear();
+      }
     }
   };
 
@@ -66,6 +124,7 @@ const Form = ({ currentId, setCurrentId }) => {
 
   return (
     <Paper className={classes.paper}>
+      <AlertDialog />
       <form
         autoComplete="off"
         noValidate
