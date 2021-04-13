@@ -23,9 +23,7 @@ export default makeStyles((theme) => ({
     },
   },
   image: {
-    marginLeft: "13px",
-    marginTop: "15px",
-    marginBottom: "15px",
+    marginLeft: "14px",
     [theme.breakpoints.down("sm")]: {
       height: "2.65rem",
     },
@@ -58,6 +56,7 @@ export default makeStyles((theme) => ({
   brandContainer: {
     display: "flex",
     alignItems: "center",
+    marginBottom: "20px",
   },
   avatar: {
     color: theme.palette.getContrastText("#716658"),
