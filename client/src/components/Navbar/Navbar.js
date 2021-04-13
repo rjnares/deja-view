@@ -6,6 +6,7 @@ import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import decode from "jwt-decode";
 
 import dejaViewImage from "../../images/dejaView.png";
 import useStyles from "./styles";
@@ -27,7 +28,11 @@ const Navbar = () => {
   useEffect(() => {
     const token = user?.token;
 
-    // JWT manual sign in later...
+    if (token) {
+      const decodedToken = decode(token);
+
+      if (decodedToken.exp * 1000 < new Date().getTime()) signOut();
+    }
 
     setUser(JSON.parse(localStorage.getItem("profile")));
   }, [location]);
