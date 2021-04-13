@@ -43,6 +43,11 @@ export default makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-between",
     width: "400px",
+    [theme.breakpoints.down("xs")]: {
+      flexDirection: "column",
+      alignItems: "center",
+      marginTop: "10px",
+    },
   },
   userName: {
     display: "flex",
@@ -55,5 +60,11 @@ export default makeStyles((theme) => ({
   purple: {
     color: theme.palette.getContrastText(deepPurple[500]),
     backgroundColor: deepPurple[500],
+  },
+  signout: {
+    [theme.breakpoints.down("xs")]: {
+      width: "100%",
+      marginTop: "10px",
+    },
   },
 }));
