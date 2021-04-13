@@ -77,7 +77,11 @@ const Post = ({ post, setCurrentId }) => {
       )}
       <div className={classes.details}>
         <Typography variant="body2" color="textSecondary" component="h2">
-          {post.tags.map((tag) => `#${tag} `)}
+          {post.tags.map((tag) => {
+            const trimmedTag = tag.trim();
+            if (trimmedTag) return `#${trimmedTag} `;
+            else return "";
+          })}
         </Typography>
       </div>
       <Typography
