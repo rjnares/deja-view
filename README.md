@@ -2,7 +2,7 @@
 #### Social Media | Web App
 A social media app where users share "views," which are posts serving as memories of life events. The name is a pun for the French phrase "déjà vu," since users "relive" previous memories by interacting with shared views.
 
-![Deja View Home](https://github.com/rjnares/deja-view/blob/main/images/deja-view-home.jpg?raw=true)
+![Deja View Home](https://raw.githubusercontent.com/rjnares/deja-view/main/images/deja-view-home.JPG)
 
 ## Motivation
 To learn how to design/implement/deploy full-stack MERN apps, and replicate the most essential part of any social media app...posts!
