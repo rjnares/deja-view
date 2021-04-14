@@ -16,6 +16,11 @@ app.use(cors());
 app.use("/posts", postRoutes);
 app.use("/user", userRoutes);
 
+// Used to open server app and verify server deploy worked
+app.get("/", (req, res) => {
+  res.send("Hello to Deja View API");
+});
+
 const PORT = process.env.PORT || 5000;
 
 mongoose
